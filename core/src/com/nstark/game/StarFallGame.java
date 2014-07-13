@@ -1,28 +1,39 @@
 package com.nstark.game;
 
-import com.badlogic.gdx.Game;
+import com.nstark.Inputs.GameInput;
+import com.nstark.Inputs.SplashInput;
 import com.nstark.assets.Textures;
+import com.nstark.enums.ScreenType;
+import com.nstark.screens.GameScreen;
 import com.nstark.screens.SplashScreen;
 
-public class StarFallGame extends Game
+import static com.nstark.enums.ScreenType.SPLASH;
+
+public class StarFallGame extends BaseGame
 {
 	@Override
 	public void create()
 	{
 		Textures.load();
 
-		this.setScreen(new SplashScreen(this));
+		changeScreen(SPLASH);
 	}
 
-	@Override
-	public void render()
+	public void changeScreen(ScreenType screen)
 	{
-		super.render();
-	}
-
-	@Override
-	public void dispose()
-	{
-		super.dispose();
+		switch(screen)
+		{
+			case SPLASH:
+				setScreen(new SplashScreen(this));
+				setInput(new SplashInput(this));
+				//setSound(new SplashSound(this));
+				break;
+			case GAME:
+				setScreen(new GameScreen(this));
+				setInput(new GameInput(this));
+				break;
+			default:
+				throw new IllegalArgumentException("");
+		}
 	}
 }

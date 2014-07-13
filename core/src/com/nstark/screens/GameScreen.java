@@ -1,14 +1,30 @@
 package com.nstark.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL30;
+import com.nstark.game.StarFallGame;
+import com.nstark.game_objects.Ship;
 
 public class GameScreen implements Screen
 {
+	private StarFallGame game;
+
+	float screenWidth;
+	float screenHeight;
+
+	Ship ship;
+
+	public GameScreen(StarFallGame game)
+	{
+		this.game = game;
+	}
 	
 	@Override
 	public void render(float delta)
 	{
-		// TODO Auto-generated method stub
+		Gdx.gl.glClearColor(0, 0, 0, 0);
+		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 	}
 	
 	@Override
@@ -20,7 +36,10 @@ public class GameScreen implements Screen
 	@Override
 	public void show()
 	{
-		// TODO Auto-generated method stub
+		screenWidth = Gdx.graphics.getWidth();
+		screenHeight = Gdx.graphics.getHeight();
+
+		ship = new Ship(5, 8);
 	}
 	
 	@Override

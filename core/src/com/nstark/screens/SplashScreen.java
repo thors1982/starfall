@@ -40,11 +40,6 @@ public class SplashScreen implements Screen
 
 		batcher.draw(Textures.logo, screenWidth / 2 - Textures.logo.getWidth() / 2, screenHeight / 2 - Textures.logo.getHeight() / 2);
 		batcher.end();
-
-		if(Gdx.input.justTouched())
-		{
-			game.setScreen(new GameScreen());
-		}
 	}
 
 	@Override
